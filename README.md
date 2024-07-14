@@ -52,7 +52,7 @@ https://user-images.githubusercontent.com/6702424/197344513-065246b9-8823-4894-a
 - 🧪 Enables testing of your local module copy in your application before publishing it on NPM.
 - 🌗 Offers flexibility to use different repository images for dark and light modes. For instance, check out [i18nifty](https://github.com/etalab/i18nifty): [Light](https://user-images.githubusercontent.com/6702424/200299948-94bacf9d-381e-40f8-b9a3-8e726bcd37c5.png) and [Dark](https://user-images.githubusercontent.com/6702424/200299807-42388349-a5ae-44b2-abd1-0aa538b58da2.png). For implementation details, see [here](https://github.com/etalab/i18nifty/blob/f6ad7bb11514224a416158af7af8e4073c7932c1/README.md?plain=1#L1-L11). TS-CI also provides [an additional action](https://github.com/garronej/ts-ci/blob/09916b317c55a04dbf2fc036d7343cd6c6756cc6/.github/workflows/ci.yaml#L105-L107) that removes the dark mode specific image from your README.md before [publishing on NPM](https://www.npmjs.com/package/i18nifty), as NPM does not yet support the `#gh-dark-mode-only` syntax.
 - 🩳 By default, TS-CI incorporates [a step in the workflow](https://github.com/garronej/ts-ci/blob/09916b317c55a04dbf2fc036d7343cd6c6756cc6/.github/workflows/ci.yaml#L102) that relocates your distribution files to the root directory before releasing, allowing your users to import specific files from your module as `import {...} from "my_module/theFile"` rather than "my_module/**dist**/theFile". If you dislike this behavior or if you only have an index.ts file and do not intend for users to selectively import from your module, you may remove [this action](https://github.com/garronej/ts-ci/blob/09916b317c55a04dbf2fc036d7343cd6c6756cc6/.github/workflows/ci.yaml#L102).
-- ⚙️ ESlint and Prettier are automatically triggered against files staged for commit. Despite what [t3dotgg](https://github.com/t3dotgg) says, it's the correct way of doing it, 
+- ⚙️ Biome automatically triggered against files staged for commit. Despite what [t3dotgg](https://github.com/t3dotgg) says, it's the correct way of doing it, 
 that being said, this feature is optional and can be [disabled](https://github.com/garronej/ts-ci/blob/8da207622e51a248542cf013707198cd7cad1d09/README.md?plain=1#L87-L91) if desired.
 
 # Release in CJS, ESM or both (but don't bundle!)
@@ -159,11 +159,6 @@ You can increase the verbosity by creating a new secret `ACTIONS_STEP_DEBUG` and
 
 ![image](https://user-images.githubusercontent.com/6702424/144307837-f401c595-4695-45e3-8459-b1c1ca7fabb9.png)
 
-## Disable linting and formatting
-
-Remove [this](https://github.com/garronej/ts_ci/blob/974054f2b83f8170317f2b2fa60b5f78e9336c0b/package.json#L15-L18), [this](https://github.com/garronej/ts_ci/blob/974054f2b83f8170317f2b2fa60b5f78e9336c0b/package.json#L20-L32) and [this](https://github.com/garronej/ts_ci/blob/974054f2b83f8170317f2b2fa60b5f78e9336c0b/package.json#L47-L53) from your `package.json`  
-Remove [this](https://github.com/garronej/ts_ci/blob/974054f2b83f8170317f2b2fa60b5f78e9336c0b/.github/workflows/ci.yaml#L12-L26) and [this](https://github.com/garronej/ts_ci/blob/974054f2b83f8170317f2b2fa60b5f78e9336c0b/.github/workflows/ci.yaml#L29) from `github/workflows/ci.yaml`  
-Remove `.eslintignore`, `.eslintrc.js`, `.prettierignore` and `.prettierrc.json`.
 
 ## Accessing files outside the ``dist/`` directory (when [this line is present in your repo](https://github.com/garronej/ts-ci/blob/eabbcfa5b22777c6b051206d8f4e2c8a8624c853/.github/workflows/ci.yaml#L100))
 
