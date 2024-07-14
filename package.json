@@ -7,7 +7,9 @@
     "url": "git://github.com/#{USER_OR_ORG}#/#{REPO_NAME}#.git"
   },
   "scripts": {
-    "build": "tsc",
+    "build": "rm -rf dist && pnpm build:cjs && pnpm build:esm",
+    "build:cjs": "tsc -p tsconfig.json",
+    "build:esm": "tsc -p tsconfig.esm.json",
     "test": "vitest",
     "typecheck": "tsc --noEmit",
     "check:cmd": "biome check --no-errors-on-unmatched",
