@@ -13,8 +13,7 @@
 		"check:cmd": "biome check --no-errors-on-unmatched",
 		"check:fix": "pnpm check:cmd --write .",
 		"check": "pnpm check:cmd .",
-		"fullcheck": "pnpm check:fix && pnpm typecheck && pnpm test",
-		"link-in-app": "tsx scripts/link-in-app.ts"
+		"fullcheck": "pnpm check:fix && pnpm typecheck && pnpm test"
 	},
 	"main": "dist/index.js",
 	"types": "dist/index.d.ts",
